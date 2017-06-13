@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "TreeFallCollide",
+		uint64 ResourceId = 5920716f66d21e52,
+	},
+},
