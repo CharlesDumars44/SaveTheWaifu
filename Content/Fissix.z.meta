@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Fissix",
+		uint64 ResourceId = 595f35cec29fb9c4,
+	},
+},

@@ -1,0 +1,49 @@
+// Authors: Charles duMars, Stuart Strom, Julian Wong
+// All content © 2017 DigiPen (USA) Corporation, all rights reserved.
+class PlayerController : ZilchComponent
+{
+    [Dependency]
+    var Fissix : Fissix = null;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var dir = 0.0;
+        if(Zero.Keyboard.KeyIsDown(Keys.A) || Zero.Keyboard.KeyIsDown(Keys.Left))
+        {
+            dir = -1;
+        }
+        else if(Zero.Keyboard.KeyIsDown(Keys.D) || Zero.Keyboard.KeyIsDown(Keys.Right))
+        {    
+           dir = 1;
+        }
+        
+        if(Zero.Keyboard.KeyIsPressed(Keys.A) || Zero.Keyboard.KeyIsPressed(Keys.Left))
+        {
+            //this.Owner.Sprite.SpriteSource = (Running Left Animation);
+            this.Owner.Sprite.FlipX = true;
+            this.Owner.Transform.Scale = Real3(1,1,1);
+        }
+        else if(Zero.Keyboard.KeyIsPressed(Keys.D) || Zero.Keyboard.KeyIsPressed(Keys.Right))
+        {
+            //this.Owner.Sprite.SpriteSource = (Running Right Animation);
+            this.Owner.Sprite.FlipX = false;
+            this.Owner.Transform.Scale = Real3(1,1,1);
+        }
+        else if(dir == 0)
+        {
+            //this.Owner.Sprite.SpriteSource = (Idle Animation);
+            this.Owner.Transform.Scale = Real3(0.8,1,1);
+        }
+        
+        if(Zero.Keyboard.KeyIsPressed(Keys.W) && this.Fissix.Grounded())
+        {
+            this.Fissix.Jump();
+        }
+        
+        this.Fissix.Update(dir, event.Dt);
+    }
+}

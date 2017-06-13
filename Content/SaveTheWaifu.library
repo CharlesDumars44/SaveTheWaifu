@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "SaveTheWaifu",
+	uint64 LibraryId = 595f34a73fbfe072,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

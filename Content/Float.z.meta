@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Float",
+		uint64 ResourceId = 595f38e57e20779e,
+	},
+},
