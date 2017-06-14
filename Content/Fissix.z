@@ -6,7 +6,7 @@ class Fissix : ZilchComponent
     [Dependency]
     var Trans : Transform = null;
     [Dependency]
-    var Collider : BoxCollider = null;
+    var Collider : CapsuleCollider = null;
     [Dependency]
     var RBody : RigidBody = null;
     
@@ -80,8 +80,13 @@ class Fissix : ZilchComponent
     function Grounded() : Boolean
     {
         var pos = this.Trans.Translation+this.Collider.Offset;
+        /*
         var width = this.Collider.Size.X;
         var dist = this.Collider.Size.Y/2;
+        */
+        var width = this.Collider.Radius*2;
+        var dist = (this.Collider.Height/2) + this.Collider.Radius;
+        
         var ray = Ray();
         ray.Direction = this.Space.LevelSettings.GravityEffect.Direction;
         ray.Start = pos;
