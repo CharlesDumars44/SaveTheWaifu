@@ -1,0 +1,32 @@
+class Landslide : ZilchComponent
+{
+    [Property]
+    var Move : Real3 = Real3();
+    [Property]
+    var MoveTime : Real;
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+        
+        this.StartSlide();
+    }
+
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        Console.WriteLine("landslide: `event.OtherObject`");
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    
+    function StartSlide()
+    {
+        var movSeq = Action.Sequence(this.Owner.Actions);
+        var newLocation = this.Owner.Transform.Translation + this.Move;
+        
+        Actions.Property(movSeq, @this.Owner.Transform.Translation, newLocation, this.MoveTime, Ease.QuadIn);
+    }
+}

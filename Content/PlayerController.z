@@ -4,6 +4,7 @@ class PlayerController : ZilchComponent
 {
     [Dependency]
     var Fissix : Fissix = null;
+    var Direction : Integer = 0;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -11,14 +12,14 @@ class PlayerController : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        var dir = 0.0;
+        var dir = 1;
         if(Zero.Keyboard.KeyIsDown(Keys.A) || Zero.Keyboard.KeyIsDown(Keys.Left))
         {
-            dir = -1;
+            dir = 0;
         }
         else if(Zero.Keyboard.KeyIsDown(Keys.D) || Zero.Keyboard.KeyIsDown(Keys.Right))
         {    
-           dir = 1;
+            dir = 1;
         }
         
         if(Zero.Keyboard.KeyIsPressed(Keys.A) || Zero.Keyboard.KeyIsPressed(Keys.Left))
@@ -26,24 +27,29 @@ class PlayerController : ZilchComponent
             //this.Owner.Sprite.SpriteSource = (Running Left Animation);
             this.Owner.Sprite.FlipX = true;
             this.Owner.Transform.Scale = Real3(1,1,1);
+            
+            this.Direction = -1;
         }
         else if(Zero.Keyboard.KeyIsPressed(Keys.D) || Zero.Keyboard.KeyIsPressed(Keys.Right))
         {
             //this.Owner.Sprite.SpriteSource = (Running Right Animation);
             this.Owner.Sprite.FlipX = false;
             this.Owner.Transform.Scale = Real3(1,1,1);
+            
+            this.Direction = 1;
         }
         else if(dir == 0)
         {
             //this.Owner.Sprite.SpriteSource = (Idle Animation);
-            this.Owner.Transform.Scale = Real3(0.8,1,1);
+            this.Owner.Transform.Scale = Real3(1,1,1);
         }
         
-        if(Zero.Keyboard.KeyIsPressed(Keys.W) && this.Fissix.Grounded())
+        if((Zero.Keyboard.KeyIsPressed(Keys.W) || Zero.Keyboard.KeyIsPressed(Keys.Up)) && this.Fissix.Grounded())
         {
             this.Fissix.Jump();
         }
         
         this.Fissix.Update(dir, event.Dt);
+        Console.WriteLine("`this.Owner.RigidBody.Velocity`");
     }
 }

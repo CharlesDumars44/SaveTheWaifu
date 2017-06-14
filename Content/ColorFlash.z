@@ -1,0 +1,46 @@
+class ColorFlash : ZilchComponent
+{
+    [Property]
+    var Color : Real4 = Real4();
+    [Property]
+    var FlashTransitionTime : Real;
+    
+    //The delay between switching from the original to the flashing color.
+    //This is called twice, once after each time the color changes.
+    [Property]
+    var FlashDelayMin : Real;
+    [Property]
+    var FlashDelayMax : Real;
+    var OrigColor : Real4 = Real4();
+    
+    var RandomGenerator : Random = Random();
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        this.OrigColor = this.Owner.Sprite.Color;
+        
+        this.Flash();
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    
+    function Flash()
+    {
+        var flashSeq = Action.Sequence(this.Owner.Actions);
+        
+        for (var i = 0; i < 2; ++i)
+        {
+            //Create a random delay for each flash
+            var flashDelay = this.RandomGenerator.Range(this.FlashDelayMin, this.FlashDelayMax);
+            
+            Action.Property(flashSeq, @this.Owner.Sprite.Color, this.Color, this.FlashTransitionTime, Ease.Linear);
+            Action.Delay(flashSeq, flashDelay);
+            Action.Property(flashSeq, @this.Owner.Sprite.Color, this.OrigColor, this.FlashTransitionTime, Ease.Linear);
+            Action.Delay(flashSeq, flashDelay);
+        }
+    }
+}
