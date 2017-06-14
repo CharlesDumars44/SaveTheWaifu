@@ -124,11 +124,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-<<<<<<< HEAD
-			Vec3 LookTarget = [-2.87955022, 1.80283689, -2.78859034e-07],
-=======
 			Vec3 LookTarget = [1.45738888, -2.31498313, -8.9285443e-08],
->>>>>>> 1425a25941037a6d2fa8ec6c1764fbd278071cef
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
