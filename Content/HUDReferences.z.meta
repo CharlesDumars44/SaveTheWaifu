@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "HUDReferences",
+		uint64 ResourceId = 5921bd4072e0cf4e,
+	},
+},

@@ -1,8 +1,9 @@
 class Clock : ZilchComponent
 {
-    var Time : Real;
+    [Dependency]
+    var SText : SpriteText = null;
     [Property]
-    var TimeLimit : Real;
+    var Time : Real;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -10,12 +11,14 @@ class Clock : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        
-        if(this.Time >= this.TimeLimit)
+        if(this.Time <= 0)
         {
-            Console.WriteLine("Works");
+            this.Time = 0;
+            //Game Over
         }else{
-            this.Time += event.Dt;
+            this.Time -= event.Dt;
+            this.SText.Text = "`Math.Round(this.Time)`";
         }
+    this.Owner.SpriteText = (this.Time);
     }
 }
