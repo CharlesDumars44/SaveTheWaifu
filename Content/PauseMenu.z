@@ -1,0 +1,24 @@
+class PauseMenu : ZilchComponent
+{
+    var Open : Boolean = false;
+    var GameSpace : Space = null;
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.GameSession, Events.GameRequestQuit, this.OnQuitRequest);
+        this.GameSpace = this.Space.LevelSettings.HUDReferences.MainSpaceRef;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    function OnQuitRequest(event : GameEvent)
+    {
+        event.Handled = true;
+        
+    }
+    function OpenMenu()
+    {
+        this.GameSpace.TimeSpace.TogglePause();
+    }
+}
