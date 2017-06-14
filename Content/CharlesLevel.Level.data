@@ -15,7 +15,7 @@ Level =
 			bool Active = true,
 			bool WakeUpOnChange = false,
 			bool LocalSpaceDirection = true,
-			float Strength = 50,
+			float Strength = 45,
 			Vec3 Direction = [0, -1, 0],
 		},
 		DragEffect = 
@@ -104,7 +104,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [7.03978872, 6.93971682, 50],
+			Vec3 Translation = [14.5226479, -14.4640045, 50],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-08, 0, 1],
 		},
@@ -116,7 +116,7 @@ Level =
 			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
-			float Size = 26.9971752,
+			float Size = 67.0320663,
 		},
 		EditorCameraController = 
 		{
@@ -124,7 +124,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [7.03978872, 6.93971682, 0],
+			Vec3 LookTarget = [14.5226479, -14.4640045, -4.14637142e-08],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -148,7 +148,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [5.93010712, 3.23796749, 0],
+			Vec3 Translation = [-2.02637482, -19.4301109, 0],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -195,6 +195,18 @@ Level =
 			AxisDirection Direction = Y,
 			CapsuleScalingMode ScalingMode = PreserveScale,
 		},
+		Fissix = 
+		{
+			float Acceleration = 20,
+			float Friction = 15,
+			float Drag = 3,
+			float MaxGroundVelocity = 20,
+			float MaxAirVelocity = 20,
+			float JumpStrength = 20,
+		},
+		PlayerController = 
+		{
+		},
 		IgnoreSpaceEffects = 
 		{
 			bool Drag = true,
@@ -210,21 +222,6 @@ Level =
 			bool PointForce = false,
 			bool Buoyancy = false,
 			bool Custom = false,
-		},
-		Float = 
-		{
-		},
-		Fissix = 
-		{
-			float Acceleration = 4,
-			float Friction = 15,
-			float Drag = 3,
-			float MaxGroundVelocity = 50,
-			float MaxAirVelocity = 7,
-			float JumpStrength = 20,
-		},
-		PlayerController = 
-		{
 		},
 		Hierarchy = 
 		{
@@ -242,9 +239,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 0, 0],
-			Vec3 Scale = [40, 1, 1],
-			Quat Rotation = [0, 0, -0.087155737, 0.99619472],
+			Vec3 Translation = [-3.30672741, -23.6164951, 0],
+			Vec3 Scale = [48, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
 		},
 		Sprite = 
 		{
@@ -287,7 +284,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-20.466465, 23.9230232, 0],
+			Vec3 Translation = [-27.4200706, 4.40805817, 0],
 			Vec3 Scale = [1, 60, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -332,7 +329,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [28.0847969, 22.7009087, 0],
+			Vec3 Translation = [21.2002449, -7.74535179, 0],
 			Vec3 Scale = [1, 60, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -363,6 +360,9 @@ Level =
 			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
 			Vec3 Offset = [0, 0, 0],
 			Vec3 Size = [0.5, 0.5, 0.5],
+		},
+		Perishable = 
+		{
 		},
 	},
 	Cog = 
@@ -422,7 +422,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [5.6781435, 10.4217491, 0],
+			Vec3 Translation = [-2.08570576, -14.7404747, 0],
 			Vec3 Scale = [40, 0.999999881, 1],
 			Quat Rotation = [0, 0, 0.087155737, 0.99619472],
 		},
@@ -550,6 +550,28 @@ Level =
 				CogPathPreference PathPreference2 = Absolute,
 			},
 			Vec3 Displacement = [0, 0, 40],
+		},
+		RigidBody = 
+		{
+			bool Static = false,
+			bool Asleep = false,
+			bool Kinematic = true,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = true,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, -40],
+			Vec3 Size = [20, 20, 0.5],
 		},
 	},
 },
