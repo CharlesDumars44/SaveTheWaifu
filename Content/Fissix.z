@@ -79,7 +79,7 @@ class Fissix : ZilchComponent
     
     function Grounded() : Boolean
     {
-        var pos = this.Trans.Translation+this.Collider.Offset;
+        var pos = this.Trans.Translation + this.Collider.Offset;
         /*
         var width = this.Collider.Size.X;
         var dist = this.Collider.Size.Y/2;
