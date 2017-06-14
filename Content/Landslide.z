@@ -1,8 +1,5 @@
-//Attach to the collider box of the tree.
-class TreeFallCollide : ZilchComponent
+class Landslide : ZilchComponent
 {
-    [Dependency]
-    var Area : Area;
     [Property]
     var Move : Real3 = Real3();
     [Property]
@@ -13,19 +10,19 @@ class TreeFallCollide : ZilchComponent
         //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
         
-        this.FallDown();
+        this.StartSlide();
     }
 
     function OnCollisionStarted(event : CollisionEvent)
     {
-        Console.WriteLine("tree: `event.OtherObject`");
+        Console.WriteLine("landslide: `event.OtherObject`");
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
     }
     
-    function FallDown()
+    function StartSlide()
     {
         var movSeq = Action.Sequence(this.Owner.Actions);
         var newLocation = this.Owner.Transform.Translation + this.Move;
