@@ -104,7 +104,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-19.741188, 6.72515583, 90],
+			Vec3 Translation = [-16.7884884, 7.52645731, 90],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-08, 0, 1],
 		},
@@ -116,7 +116,7 @@ Level =
 			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
-			float Size = 7.35759544,
+			float Size = 12.2456684,
 		},
 		EditorCameraController = 
 		{
@@ -124,7 +124,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [-19.741188, 6.72515583, 40],
+			Vec3 LookTarget = [-16.7884884, 7.52645731, 40],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -328,6 +328,44 @@ Level =
 			float Height = 0.5,
 			AxisDirection Direction = Y,
 			CapsuleScalingMode ScalingMode = PreserveScale,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 7,
+		},
+		Named = 
+		{
+			string Name = "Clock",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-22.2571011, 9.50589371, 40],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		SpriteText = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string FontName = "4e7bac697bec55c5:Verdana",
+			uint FontSize = 30,
+			string Text = "Sprite Text...",
+			TextAlign Align = Left,
+			float PixelsPerUnit = 64,
+			bool Smoothing = true,
+		},
+		Clock = 
+		{
+			float TimeLimit = 5,
 		},
 	},
 },
