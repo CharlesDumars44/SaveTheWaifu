@@ -12,10 +12,10 @@ class PlayerController : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        var dir = 0.0;
+        var dir = 1;
         if(Zero.Keyboard.KeyIsDown(Keys.A) || Zero.Keyboard.KeyIsDown(Keys.Left))
         {
-            dir = -1;
+            dir = 0;
         }
         else if(Zero.Keyboard.KeyIsDown(Keys.D) || Zero.Keyboard.KeyIsDown(Keys.Right))
         {    
@@ -44,11 +44,12 @@ class PlayerController : ZilchComponent
             this.Owner.Transform.Scale = Real3(1,1,1);
         }
         
-        if(Zero.Keyboard.KeyIsPressed(Keys.W) && this.Fissix.Grounded())
+        if((Zero.Keyboard.KeyIsPressed(Keys.W) || Zero.Keyboard.KeyIsPressed(Keys.Up)) && this.Fissix.Grounded())
         {
             this.Fissix.Jump();
         }
         
         this.Fissix.Update(dir, event.Dt);
+        Console.WriteLine("`this.Owner.RigidBody.Velocity`");
     }
 }
