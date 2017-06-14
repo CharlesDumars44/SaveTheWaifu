@@ -1,0 +1,21 @@
+class Clock : ZilchComponent
+{
+    var Time : Real;
+    [Property]
+    var TimeLimit : Real;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        
+        if(this.Time >= this.TimeLimit)
+        {
+            Console.WriteLine("Works");
+        }else{
+            this.Time += event.Dt;
+        }
+    }
+}
