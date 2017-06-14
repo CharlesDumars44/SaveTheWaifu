@@ -2,22 +2,26 @@ class CreateFloor : ZilchComponent
 {
     [Property]
     var Floor : Archetype = null;
+    [Property]
+    var FirstFloor : CogPath = null;
     var LastFloor : Cog = null;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.LastFloor = this.FirstFloor.Cog;
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
         if((this.Owner.Transform.Translation.X - this.LastFloor.Transform.Translation.X) > this.LastFloor.Transform.Scale.X/2)
         {
-            
+            this.SpawnFloor();
         }
     }
     function SpawnFloor()
     {
         var wid = this.LastFloor.Transform.Scale.X;
-        this.Space.CreateAtPosition(this.Floor, this.LastFloor.Transform.Translation + Real3(wid,0,0));
+        var temp = this.Space.CreateAtPosition(this.Floor, this.LastFloor.Transform.Translation + Real3(wid,0,0));
+        this.LastFloor = temp;
     }
 }
