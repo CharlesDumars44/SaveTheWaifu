@@ -14,6 +14,5 @@ class TrackDistance : ZilchComponent
     function OnLogicUpdate(event : UpdateEvent)
     {
         this.Distance = Math.Length(this.Owner.Transform.Translation - this.OrigPos);
-        Console.WriteLine("`this.Owner.Name` distance: `this.Distance`");
     }
 }

@@ -18,7 +18,6 @@ class TreeFallCollide : ZilchComponent
 
     function OnCollisionStarted(event : CollisionEvent)
     {
-        Console.WriteLine("tree: `event.OtherObject`");
     }
 
     function OnLogicUpdate(event : UpdateEvent)
