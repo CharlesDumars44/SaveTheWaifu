@@ -1,0 +1,19 @@
+//Attach to the object to track its distance.
+class TrackDistance : ZilchComponent
+{
+    var Distance : Real;
+    var OrigPos : Real3 = Real3();
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        this.OrigPos = this.Owner.Transform.Translation;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Distance = Math.Length(this.Owner.Transform.Translation - this.OrigPos);
+        Console.WriteLine("`this.Owner.Name` distance: `this.Distance`");
+    }
+}

@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "TrackDistance",
+		uint64 ResourceId = 592083c9b795459f,
+	},
+},

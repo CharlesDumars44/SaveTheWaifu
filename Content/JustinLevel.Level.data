@@ -104,7 +104,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [3.55650163, -2.699229, 50],
+			Vec3 Translation = [-2.87955022, 1.80283689, 50],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-08, 0, 1],
 		},
@@ -124,7 +124,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [3.55650163, -2.699229, 2.46979814e-09],
+			Vec3 LookTarget = [-2.87955022, 1.80283689, -2.78859034e-07],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -275,7 +275,7 @@ Level =
 					bool Mode2D = true,
 					bool AllowSleep = true,
 					bool Inherit2DMode = true,
-					Vec3 Velocity = [0, 243.749985, 0],
+					Vec3 Velocity = [156.249985, 243.749985, 0],
 					Vec3 AngularVelocity = [0, 0, 0],
 				},
 				BoxCollider = 
@@ -371,7 +371,7 @@ Level =
 		Transform = 
 		{
 			Vec3 Translation = [7.5, 1.5, 0],
-			Vec3 Scale = [1, 1, 1],
+			Vec3 Scale = [5, 1, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
 		Sprite = 
@@ -418,6 +418,9 @@ Level =
 		{
 			Vec3 Move = [-5, -5, 0],
 			float MoveTime = 1,
+		},
+		TrackDistance = 
+		{
 		},
 	},
 },
