@@ -1,0 +1,96 @@
+// Authors: Julian Wong
+// All content © 2017 DigiPen (USA) Corporation, all rights reserved.
+// Custom event that notifies the UIMenuManager of state changes on its buttons
+class MenuLevelStart : ZilchComponent
+{
+    // This component requires a reactive component
+    [Dependency]
+    var Reactive : Reactive = null;
+
+    // Should this component be active?
+    [Property]
+    var Active : Boolean = true;
+
+    // Sprite Sources for Default, Hovered, and Clicked States
+    [Property]
+    var DefaultSprite : SpriteSource = null;
+
+    [Property]
+    var HoveredSprite : SpriteSource = null;
+
+    [Property]
+    var ClickedSprite : SpriteSource = null;
+
+    // Property to select which level this button should load when clicked
+    [Property]
+    var LevelToLoad : Level = null;
+    
+    //[Property]
+    //var StartButton : Boolean = false;
+
+    // Button that underwent a state change
+    var Button : Cog = null;
+    
+    var FadeScreen : Cog = null;
+    
+    var FadeStarting : Boolean = false;
+    
+    var Timer : Real = 0;
+
+    function Initialize(init : CogInitializer)
+    {
+      // Connections to the needed Mouse events (Enter, Exit, Up, Down)
+      //Zero.Connect(this.Owner, Events.MouseEnter, this.OnMouseEnter);
+      //Zero.Connect(this.Owner, Events.MouseExit, this.OnMouseExit);
+      this.FadeScreen = this.Space.FindObjectByName("LoadScreen");
+      Zero.Connect(this.Owner, Events.MouseUp, this.OnMouseUp);
+      Zero.Connect(this.Owner, Events.MouseDown, this.OnMouseDown);
+      Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.FadeStarting == true)
+        {
+            this.Timer += event.Dt;
+        }
+        if(this.Timer >= 1.5)
+        {
+            Console.WriteLine("Changing Level");
+            this.FadeStarting = false;
+            //Reset game values
+            //if(this.LevelToLoad == Level.GameLevel)
+                //this.GameSession.GameVars.Reset();
+            
+            this.Space.LoadLevel(this.LevelToLoad);
+        }
+    }
+
+    // Responds to the mouse releasing a button
+    function OnMouseUp(event : ViewportMouseEvent)
+    {
+        Console.WriteLine("Click");
+        //if(this.StartButton)
+        //{
+            this.FadeScreen.Fade.StartFade = true;
+            this.FadeStarting = true;
+        //}
+        /*else
+        {
+            this.Space.LoadLevel(this.LevelToLoad);
+        }*/
+        //this.Owner.Sprite.SpriteSource = this.DefaultSprite;
+    }
+
+    // Responds to the mouse clicking a button
+    function OnMouseDown(event : ViewportMouseEvent)
+    {
+      // Calls the function for the clicked state
+      this.ClickedState();
+    }
+    
+    function ClickedState()
+    {
+        this.Owner.Sprite.SpriteSource = this.ClickedSprite;
+    }
+}
