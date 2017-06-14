@@ -1,0 +1,44 @@
+class ObstacleSpawner : ZilchComponent
+{
+    //Used in a random die roll. Lower is a higher probability.
+    [Property]
+    var Obstacle1Chance : Integer;
+    [Property]
+    var Obstacle2Chance : Integer;
+    [Property]
+    var Obstacle3Chance : Integer;
+    
+    var RandomGenerator : Random = Random();
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var number1 = 0;
+        var number2 = 0;
+        var number3 = 0;
+        number1 = this.RandomGenerator.DieRoll(this.Obstacle1Chance);
+        number2 = this.RandomGenerator.DieRoll(this.Obstacle2Chance);
+        number3 = this.RandomGenerator.DieRoll(this.Obstacle3Chance);
+        
+        var camera = this.Space.FindObjectByName("Camera");
+        //var spawnPos = camera.Transform.Translation + ;
+        
+        //Spawn objects if die roll was successful
+        if (number1 == 1)
+        {
+            //this.Space.CreateAtPosition(Archetype.Obstacle1, spawnPos);
+        }
+        if (number2 == 1)
+        {
+            //this.Space.CreateAtPosition(Archetype.Obstacle2, spawnPos);
+        }
+        if (number3 == 1)
+        {
+            //this.Space.CreateAtPosition(Archetype.Obstacle3, spawnPos);
+        }
+    }
+}
