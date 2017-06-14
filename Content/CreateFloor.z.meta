@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "CreateFloor",
+		uint64 ResourceId = 5920878fe895600d,
+	},
+},
