@@ -41,11 +41,11 @@ class ObstacleSpawner : ZilchComponent
         {
             this.Space.CreateAtPosition(Archetype.Obstacle1, this.SpawnPos);
         }
-        if (this.RandomNumbers.Y == 1)
+        else if (this.RandomNumbers.Y == 1)
         {
             this.Space.CreateAtPosition(Archetype.Obstacle2, this.SpawnPos);
         }
-        if (this.RandomNumbers.Z == 1)
+        else if (this.RandomNumbers.Z == 1)
         {
             this.Space.CreateAtPosition(Archetype.Obstacle3, this.SpawnPos);
         }

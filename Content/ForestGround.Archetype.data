@@ -6,16 +6,12 @@ Cog =
 	},
 	Named = 
 	{
-		string Name = "Obstacle3",
-	},
-	Archetyped = 
-	{
-		string Name = "5920880185660263:Obstacle3",
+		string Name = "Ground",
 	},
 	Transform = 
 	{
-		Vec3 Translation = [8.5, 5.5, 0],
-		Vec3 Scale = [1, 1, 1],
+		Vec3 Translation = [-3.30672741, -23.6164951, 0],
+		Vec3 Scale = [48, 1, 1],
 		Quat Rotation = [0, 0, 0, 1],
 	},
 	Sprite = 
@@ -24,7 +20,7 @@ Cog =
 		bool VisibilityCulling = true,
 		bool VisibilityEvents = true,
 		bool CastShadows = false,
-		Vec4 Color = [0.790000021, 0.731144905, 0.20144999, 1],
+		Vec4 Color = [0.909999967, 0.345799983, 0.345799983, 1],
 		BlendMode BlendMode = Alpha,
 		SpriteGeometryMode GeometryMode = ZPlane,
 		string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
@@ -36,29 +32,17 @@ Cog =
 		float AnimationSpeed = 1,
 		uint StartFrame = 0,
 	},
-	RigidBody = 
-	{
-		bool Static = false,
-		bool Asleep = false,
-		bool Kinematic = false,
-		bool RotationLocked = false,
-		bool Mode2D = true,
-		bool AllowSleep = true,
-		bool Inherit2DMode = true,
-		Vec3 Velocity = [-5, 0, 0],
-		Vec3 AngularVelocity = [0, 0, 0],
-	},
 	BoxCollider = 
 	{
 		bool Ghost = false,
 		bool SendsMessages = true,
 		bool Seamless = true,
-		string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+		string MaterialName = "592075b17e9a6956:NoFriction",
 		string SerializedGroupName = "4e740859314e5515:DefaultGroup",
 		Vec3 Offset = [0, 0, 0],
 		Vec3 Size = [0.5, 0.5, 0.5],
 	},
-	DestroyOffscreen = 
+	Perishable = 
 	{
 	},
 },
