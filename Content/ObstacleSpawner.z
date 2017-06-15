@@ -22,7 +22,7 @@ class ObstacleSpawner : ZilchComponent
         
         var camera = this.Space.FindObjectByName("Camera");
         
-        if (!this.Active)
+        if (this.Active)
             this.RandomSpawn();
     }
 
@@ -52,7 +52,7 @@ class ObstacleSpawner : ZilchComponent
             this.Space.CreateAtPosition(Archetype.Obstacle3, this.SpawnPos);
         }
         
-        Action.Delay(spawnSeq, 3); //Roll dice for spawn every 3 seconds
+        Action.Delay(spawnSeq, 2); //Roll dice for spawn every 2 seconds
         Action.Call(spawnSeq, this.Respawn);
     }
     

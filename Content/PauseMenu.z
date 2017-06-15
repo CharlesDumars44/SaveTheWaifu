@@ -50,7 +50,7 @@ class PauseMenu : ZilchComponent
     function ToggleMenu()
     {
         this.Open = !this.Open;
-        this.Clock.Clock.Active = !this.Clock.Clock.Active;
+        //this.Clock.Clock.Active = !this.Clock.Clock.Active;
         this.Transitioning = true;
         this.GameSpace.TimeSpace.TogglePause();
         this.MenuButtons.Fade.StartFade = true;
