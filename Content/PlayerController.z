@@ -1,4 +1,4 @@
-// Authors: Charles duMars, Stuart Strom, Julian Wong
+﻿// Authors: Charles duMars, Stuart Strom, Julian Wong
 // All content © 2017 DigiPen (USA) Corporation, all rights reserved.
 class PlayerController : ZilchComponent
 {
@@ -50,6 +50,8 @@ class PlayerController : ZilchComponent
         }
         
         this.Fissix.Update(dir, event.Dt);
+
         //Console.WriteLine("`this.Owner.RigidBody.Velocity`");
+
     }
 }
