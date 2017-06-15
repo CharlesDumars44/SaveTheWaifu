@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "Fade",
-		uint64 ResourceId = 5921ca0b97d5a94f,
-	},
-},

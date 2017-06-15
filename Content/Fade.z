@@ -1,64 +1,60 @@
-// Authors: Charles duMars
-// All content © 2017 DigiPen (USA) Corporation, all rights reserved.
 class Fade : ZilchComponent
 {
     [Dependency]
     var Sprite : Sprite = null;
-    [Property]
-    var DontFadeKids : Boolean = false;
+    
     [Property]
     var Time : Real = 1;
     var StartFade : Boolean = false;
     [Property]
     var Invis : Boolean = false;
-    var Opacity : Real = 1;
-    //var Start : Cog;
+    var Oppacity : Real = 1;
     
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        //this.Start = this.Space.FindObjectByName("Start");
         if(this.Invis)
-            this.Opacity = 0;
+            this.Oppacity = 0;
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
+        if(Zero.Keyboard.KeyIsPressed(Keys.F))
+            this.StartFade = true;
         if(this.StartFade)
         {
             if(this.Invis)
             {
-                this.Opacity += (event.Dt/this.Time);
-                if(this.Opacity >= 1)
+                this.Oppacity += (event.Dt/this.Time);
+                if(this.Oppacity >= 1)
                 {
-                    this.Opacity = 1;
-                    this.Fade(this.Opacity);
+                    this.Oppacity = 1;
+                    this.Fade(this.Oppacity);
                     this.StartFade = false;
                     this.Invis = false;
                 }
                 else
-                    this.Fade(this.Opacity);
+                    this.Fade(this.Oppacity);
             }
             else
             {
-                this.Opacity -= (event.Dt/this.Time);
-                if(this.Opacity <= 0)
+                this.Oppacity -= (event.Dt/this.Time);
+                if(this.Oppacity <= 0)
                 {
-                    this.Opacity = 0;
-                    this.Fade(this.Opacity);
+                    this.Oppacity = 0;
+                    this.Fade(this.Oppacity);
                     this.StartFade = false;
                     this.Invis = true;
                 }
                 else
-                    this.Fade(this.Opacity);
+                    this.Fade(this.Oppacity);
             }
         }
     }
     function Fade(fade : Real)
     {
         this.Sprite.Color = Real4(this.Sprite.Color.XYZ, fade);
-        if(!this.DontFadeKids)
-            this.FadeChildren(this.Owner, fade);
+        this.FadeChildren(this.Owner, fade);
     }
     function FadeChildren(parent : Cog, fade : Real)
     {
