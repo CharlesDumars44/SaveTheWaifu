@@ -50,6 +50,6 @@ class PlayerController : ZilchComponent
         }
         
         this.Fissix.Update(dir, event.Dt);
-        Console.WriteLine("`this.Owner.RigidBody.Velocity`");
+        //Console.WriteLine("`this.Owner.RigidBody.Velocity`");
     }
 }

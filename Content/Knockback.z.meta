@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Knockback",
+		uint64 ResourceId = 5921d2a497c4822e,
+	},
+},

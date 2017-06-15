@@ -1,3 +1,4 @@
+//Spawns obstacles randomly. Should be parented to the camera and placed offscreen.
 class ObstacleSpawner : ZilchComponent
 {
     //Used in a random die roll. Lower is a higher probability.
@@ -7,6 +8,8 @@ class ObstacleSpawner : ZilchComponent
     var Obstacle2Chance : Integer;
     [Property]
     var Obstacle3Chance : Integer;
+    [Property]
+    var Active : Boolean = true;
     
     var SpawnPos : Real3 = Real3();
     var RandomNumbers : Real3 = Real3();
@@ -19,11 +22,8 @@ class ObstacleSpawner : ZilchComponent
         
         var camera = this.Space.FindObjectByName("Camera");
         
-        this.SpawnPos = camera.Transform.Translation;
-        this.SpawnPos.X += 18.5; //spawn offscreen
-        this.SpawnPos.Z = 0;
-        
-        this.RandomSpawn();
+        if (!this.Active)
+            this.RandomSpawn();
     }
 
     function OnLogicUpdate(event : UpdateEvent)
@@ -35,6 +35,8 @@ class ObstacleSpawner : ZilchComponent
         var spawnSeq = Action.Sequence(this.Owner.Actions);
         
         this.RollNumber();
+        
+        this.SpawnPos = this.Owner.Transform.Translation;
         
         //Spawn objects if die roll was successful
         if (this.RandomNumbers.X == 1)

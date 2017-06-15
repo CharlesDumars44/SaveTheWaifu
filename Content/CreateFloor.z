@@ -13,7 +13,7 @@ class CreateFloor : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        if((this.Owner.Transform.Translation.X - this.LastFloor.Transform.Translation.X) > this.LastFloor.Transform.Scale.X/2)
+        if((this.Owner.Transform.Translation.X - this.LastFloor.Transform.Translation.X) > 0)
         {
             this.SpawnFloor();
         }

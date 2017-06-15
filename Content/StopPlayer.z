@@ -1,0 +1,39 @@
+class StopPlayer : ZilchComponent
+{
+    var OrigVelocity : Real;
+    var NewVelocity : Real = 0;
+    
+    var Player : Cog;
+    
+    [Property]
+    var StopTime : Real = 2;
+    var Timer : Real = -1;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        if (event.OtherObject.PlayerController != null)
+        {
+            this.Player = event.OtherObject;
+            this.Timer = this.StopTime;
+            this.Player.RigidBody.Velocity = Real3(5, 2, 0);
+            this.Player.Fissix.MaxGroundVelocity = this.NewVelocity;
+        }
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Timer -= event.Dt;
+        Console.WriteLine(this.Timer);
+        if (this.Timer == 0 && (this.Player != null))
+        {
+            Console.WriteLine(this.Player);
+            this.Player.Fissix.MaxGroundVelocity = this.OrigVelocity;
+        }
+    }
+}
