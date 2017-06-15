@@ -27,10 +27,14 @@ class CameraPan: ZilchComponent
         if(this.Active) {
             if(this.ObjToFol != null)
             {
-                if(this.ObjToFol.Transform.Translation.X > this.Owner.Transform.Translation.X)
+                var pos = this.Owner.Transform.Translation;
+                if(this.ObjToFol.Transform.Translation.X > pos.X)
                 {
-                    this.Owner.Transform.Translation = this.ObjToFol.Transform.Translation + this.Displacement;
+                    pos.X = this.ObjToFol.Transform.Translation.X;
                 }
+                pos.Y = this.ObjToFol.Transform.Translation.Y;
+                pos.Z = 40;
+                this.Owner.Transform.Translation = pos;
             }
         }
     }

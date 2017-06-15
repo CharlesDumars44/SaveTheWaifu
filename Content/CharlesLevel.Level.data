@@ -444,7 +444,7 @@ Level =
 				CogPathPreference PathPreference1 = SpaceRelative,
 				CogPathPreference PathPreference2 = Absolute,
 			},
-			Vec3 Displacement = [0, 0, 40],
+			Vec3 Displacement = [0, 0, 0],
 		},
 	},
 	Cog = 
