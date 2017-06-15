@@ -20,7 +20,7 @@ class Clock : ZilchComponent
             this.SText.Text = "`Math.Round(this.Time)`";
         }
 
-    this.Owner.SpriteText.Text = "this.Time";
+    //this.Owner.SpriteText.Text = "`this.Time`";
 
     }
 }
