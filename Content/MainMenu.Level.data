@@ -104,7 +104,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 0.475341082, 50.9990005],
+			Vec3 Translation = [0.11421968, -2.17139149, 50.9990005],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-08, 0, 1],
 		},
@@ -116,7 +116,7 @@ Level =
 			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
-			float Size = 29.836483,
+			float Size = 16.3746185,
 		},
 		EditorCameraController = 
 		{
@@ -124,7 +124,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [0, 0.475341082, 0.999000013],
+			Vec3 LookTarget = [0.11421968, -2.17139149, 0.998999715],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -180,7 +180,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 0, -1],
+			Vec3 Translation = [0, -0.0408730507, -1],
 			Vec3 Scale = [30, 30, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -215,8 +215,8 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 3.46481419, 1],
-			Vec3 Scale = [8, 1, 1],
+			Vec3 Translation = [0, 2.00074005, 1],
+			Vec3 Scale = [4, 4, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
 		Sprite = 
@@ -225,11 +225,11 @@ Level =
 			bool VisibilityCulling = true,
 			bool VisibilityEvents = true,
 			bool CastShadows = false,
-			Vec4 Color = [0, 0, 0, 1],
+			Vec4 Color = [1, 1, 1, 0],
 			BlendMode BlendMode = Alpha,
 			SpriteGeometryMode GeometryMode = ZPlane,
 			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
-			string SpriteSource = "5275aa4d802dd6dc:Square",
+			string SpriteSource = "59230249536dd56a:button-notclicked",
 			bool RenderMask = false,
 			bool FlipX = false,
 			bool FlipY = false,
@@ -247,8 +247,8 @@ Level =
 			bool Active = true,
 			string DefaultSprite = "",
 			string HoveredSprite = "",
-			string ClickedSprite = "",
-			string LevelToLoad = "",
+			string ClickedSprite = "5923027451257eb2:button-clicked",
+			string LevelToLoad = "554cea0f94af672f:Level",
 		},
 	},
 	Cog = 
@@ -263,8 +263,8 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 0.475341082, 1],
-			Vec3 Scale = [8, 1, 1],
+			Vec3 Translation = [0, -2.95058441, 1],
+			Vec3 Scale = [4, 4, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
 		Sprite = 
@@ -273,11 +273,11 @@ Level =
 			bool VisibilityCulling = true,
 			bool VisibilityEvents = true,
 			bool CastShadows = false,
-			Vec4 Color = [0, 0, 0, 1],
+			Vec4 Color = [1, 1, 1, 1],
 			BlendMode BlendMode = Alpha,
 			SpriteGeometryMode GeometryMode = ZPlane,
 			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
-			string SpriteSource = "5275aa4d802dd6dc:Square",
+			string SpriteSource = "592309add49e65c2:button-notclicked2",
 			bool RenderMask = false,
 			bool FlipX = false,
 			bool FlipY = false,
@@ -295,8 +295,8 @@ Level =
 			bool Active = true,
 			string DefaultSprite = "",
 			string HoveredSprite = "",
-			string ClickedSprite = "",
-			string LevelToLoad = "",
+			string ClickedSprite = "592309a7d6fa6564:button-clicked2",
+			string LevelToLoad = "5921c087b7d905c9:Controls",
 		},
 	},
 	Cog = 
@@ -311,8 +311,8 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, -2.4720273, 1],
-			Vec3 Scale = [8, 1, 1],
+			Vec3 Translation = [0, -7.99489594, 1],
+			Vec3 Scale = [4, 4, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
 		Sprite = 
@@ -321,17 +321,30 @@ Level =
 			bool VisibilityCulling = true,
 			bool VisibilityEvents = true,
 			bool CastShadows = false,
-			Vec4 Color = [0, 0, 0, 1],
+			Vec4 Color = [1, 1, 1, 1],
 			BlendMode BlendMode = Alpha,
 			SpriteGeometryMode GeometryMode = ZPlane,
 			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
-			string SpriteSource = "5275aa4d802dd6dc:Square",
+			string SpriteSource = "592309add49e65c2:button-notclicked2",
 			bool RenderMask = false,
 			bool FlipX = false,
 			bool FlipY = false,
 			bool AnimationActive = true,
 			float AnimationSpeed = 1,
 			uint StartFrame = 0,
+		},
+		Reactive = 
+		{
+			bool Active = true,
+			bool CaptureMouse = false,
+		},
+		ExitButton = 
+		{
+			bool Active = true,
+			string DefaultSprite = "",
+			string HoveredSprite = "",
+			string ClickedSprite = "592309a7d6fa6564:button-clicked2",
+			string LevelToLoad = "",
 		},
 	},
 	Cog = 
@@ -368,18 +381,10 @@ Level =
 			float AnimationSpeed = 1,
 			uint StartFrame = 0,
 		},
-		Reactive = 
+		Fade = 
 		{
-			bool Active = true,
-			bool CaptureMouse = false,
-		},
-		ExitButton = 
-		{
-			bool Active = true,
-			string DefaultSprite = "",
-			string HoveredSprite = "",
-			string ClickedSprite = "",
-			string LevelToLoad = "",
+			float Time = 1,
+			bool Invis = true,
 		},
 	},
 },

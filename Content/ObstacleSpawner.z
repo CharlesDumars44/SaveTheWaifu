@@ -1,3 +1,4 @@
+//Spawns obstacles randomly. Should be parented to the camera and placed offscreen.
 class ObstacleSpawner : ZilchComponent
 {
     //Used in a random die roll. Lower is a higher probability.
@@ -7,38 +8,65 @@ class ObstacleSpawner : ZilchComponent
     var Obstacle2Chance : Integer;
     [Property]
     var Obstacle3Chance : Integer;
+    [Property]
+    var Active : Boolean = true;
+    
+    var SpawnPos : Real3 = Real3();
+    var RandomNumbers : Real3 = Real3();
     
     var RandomGenerator : Random = Random();
     
     function Initialize(init : CogInitializer)
     {
         //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        var camera = this.Space.FindObjectByName("Camera");
+        
+        if (this.Active)
+            this.RandomSpawn();
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        var number1 = 0;
-        var number2 = 0;
-        var number3 = 0;
-        number1 = this.RandomGenerator.DieRoll(this.Obstacle1Chance);
-        number2 = this.RandomGenerator.DieRoll(this.Obstacle2Chance);
-        number3 = this.RandomGenerator.DieRoll(this.Obstacle3Chance);
+    }
+    
+    function RandomSpawn()
+    {
+        var spawnSeq = Action.Sequence(this.Owner.Actions);
         
-        var camera = this.Space.FindObjectByName("Camera");
-        //var spawnPos = camera.Transform.Translation + ;
+        this.RollNumber();
+        
+        this.SpawnPos = this.Owner.Transform.Translation;
         
         //Spawn objects if die roll was successful
-        if (number1 == 1)
+        if (this.RandomNumbers.X == 1)
         {
-            //this.Space.CreateAtPosition(Archetype.Obstacle1, spawnPos);
+            this.Space.CreateAtPosition(Archetype.Obstacle1, this.SpawnPos);
         }
-        if (number2 == 1)
+        else if (this.RandomNumbers.Y == 1)
         {
-            //this.Space.CreateAtPosition(Archetype.Obstacle2, spawnPos);
+            this.Space.CreateAtPosition(Archetype.Obstacle2, this.SpawnPos);
         }
-        if (number3 == 1)
+        else if (this.RandomNumbers.Z == 1)
         {
-            //this.Space.CreateAtPosition(Archetype.Obstacle3, spawnPos);
+            this.Space.CreateAtPosition(Archetype.Obstacle3, this.SpawnPos);
         }
+        
+        Action.Delay(spawnSeq, 2); //Roll dice for spawn every 2 seconds
+        Action.Call(spawnSeq, this.Respawn);
+    }
+    
+    function Respawn()
+    {
+        this.RandomSpawn();
+    }
+    
+    function RollNumber()
+    {
+        this.RandomNumbers.X = this.RandomGenerator.DieRoll(this.Obstacle1Chance);
+        this.RandomNumbers.Y = this.RandomGenerator.DieRoll(this.Obstacle2Chance);
+        this.RandomNumbers.Z = this.RandomGenerator.DieRoll(this.Obstacle3Chance);
+        
+        Console.WriteLine(this.RandomNumbers);
     }
 }

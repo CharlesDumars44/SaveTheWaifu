@@ -15,7 +15,8 @@ class Landslide : ZilchComponent
 
     function OnCollisionStarted(event : CollisionEvent)
     {
-        Console.WriteLine("landslide: `event.OtherObject`");
+        if (event.OtherObject.PlayerController != null)
+            event.OtherObject.Destroy();
     }
 
     function OnLogicUpdate(event : UpdateEvent)

@@ -2,23 +2,68 @@ class PauseMenu : ZilchComponent
 {
     var Open : Boolean = false;
     var GameSpace : Space = null;
+    
+    var MenuButtons : Cog = null;
+    var Clock : Cog = null;
+    
+    var Time : Real = 0.5;
+    var Transitioning : Boolean = false;
+    
     function Initialize(init : CogInitializer)
     {
-        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         Zero.Connect(this.GameSession, Events.GameRequestQuit, this.OnQuitRequest);
-        this.GameSpace = this.Space.LevelSettings.HUDReferences.MainSpaceRef;
+        this.MenuButtons = this.Space.FindObjectByName("MenuObjects");
+        this.Clock = this.Space.FindObjectByName("Clock");
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
+        if(!this.Transitioning)
+            return;
+        if(this.Time > 0)
+        {
+            this.Time -= event.Dt;
+        }
+        else
+        {
+            this.Transitioning = false;
+            this.Time = 0.5;
+            if(this.Open)
+            {
+                foreach(var kid in this.MenuButtons.Children)
+                {
+                    if(kid.Reactive != null)
+                    {
+                        kid.Reactive.Active = !kid.Reactive.Active;
+                    }
+                }
+            }
+        }
     }
     function OnQuitRequest(event : GameEvent)
     {
         event.Handled = true;
-        
+        if(!this.Transitioning)
+            this.ToggleMenu();
     }
-    function OpenMenu()
+    function ToggleMenu()
     {
+        this.Open = !this.Open;
+        //this.Clock.Clock.Active = !this.Clock.Clock.Active;
+        this.Transitioning = true;
         this.GameSpace.TimeSpace.TogglePause();
+        this.MenuButtons.Fade.StartFade = true;
+        if(!this.Open)
+        {
+            foreach(var kid in this.MenuButtons.Children)
+            {
+                if(kid.Reactive != null)
+                {
+                    kid.Reactive.Active = !kid.Reactive.Active;
+                }
+            }
+        }
+        Console.WriteLine("`this.Open`");
     }
 }

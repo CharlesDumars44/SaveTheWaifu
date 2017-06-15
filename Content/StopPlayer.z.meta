@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "StopPlayer",
+		uint64 ResourceId = 5921d2af92107fe4,
+	},
+},
