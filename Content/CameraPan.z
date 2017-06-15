@@ -1,0 +1,37 @@
+// Authors: Charles duMars
+// All content © 2017 DigiPen (USA) Corporation, all rights reserved.
+class CameraPan: ZilchComponent
+{
+    [Dependency]
+    var Ignore : IgnoreSpaceEffects = null;
+    
+    [Property]
+    var Active : Boolean = true;
+    [Property]
+    var ObjectToFollowPath : CogPath = null;
+    [Property]
+    var Displacement : Real3 = Real3(0,0,0);
+    
+    var ObjToFol : Cog = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.Ignore.IgnoreGravity = true;
+        this.ObjToFol = this.ObjectToFollowPath.Cog;
+        this.Owner.Transform.Translation = this.ObjToFol.Transform.Translation + this.Displacement;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Active) {
+            if(this.ObjToFol != null)
+            {
+                if(this.ObjToFol.Transform.Translation.X > this.Owner.Transform.Translation.X)
+                {
+                    this.Owner.Transform.Translation = this.ObjToFol.Transform.Translation + this.Displacement;
+                }
+            }
+        }
+    }
+}
